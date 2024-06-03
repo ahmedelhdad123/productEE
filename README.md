@@ -1,6 +1,3 @@
-
-</details>
-
 <details>
 <summary><b>Components</b></summary>
 
@@ -55,5 +52,3 @@ The `ProductServlet` class acts as the entry point for handling requests related
 - Responses are generated and sent back to the user via JSP pages.
 
 </details>
-
-This organized README provides a clear overview of the project's structure, components, functionality, and control flow. You can expand each section to get detailed information as needed.
