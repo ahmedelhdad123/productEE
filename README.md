@@ -1,54 +1,43 @@
-<details>
-<summary><b>Components</b></summary>
+# ProductEE
 
-- **ProductServlet:** Acts as the front controller for managing product operations.
-- **ProductService:** Implements business logic for product management.
-- **JSP Pages for UI:**
-  - **listProducts.jsp:** Displays the list of products with delete buttons.
-  - **addProduct.jsp:** Form for adding a new product.
+ProductEE is a simple Java EE web application that manages a list of products. It allows users to view, add, and delete products through a web interface. This application uses servlets to handle HTTP requests and JSP for rendering views.
 
-</details>
+## Project Structure
 
-<details>
-<summary><b>Functionality</b></summary>
+The project consists of the following main components:
 
-<details>
-<summary><i>Product Model</i></summary>
+1. **Servlet**: `ProductServlet` handles HTTP requests and routes them to the appropriate methods.
+2. **Entities**: `Product` represents a product entity, and `ProductService` manages a list of products.
+3. **JSP Pages**: Views for adding and listing products.
 
-The `Product` class defines the structure of a product, including attributes like id, name, and price.
-</details>
+## Components
 
-<details>
-<summary><i>Product Service</i></summary>
+### 1. ProductServlet
 
-The `ProductService` class provides methods to manage products:
-- `addProduct(Product product)`: Adds a new product.
-- `listProducts()`: Retrieves the list of products.
-- `removeProduct(int productId)`: Removes a product by ID.
-</details>
+The `ProductServlet` class handles the incoming HTTP requests and routes them to the appropriate handlers based on the request path. It supports both `GET` and `POST` methods.
 
-<details>
-<summary><i>Product Servlet (Front Controller)</i></summary>
+- **doGet**: Handles the rendering of the product list and the product addition form.
+  - `/add`: Forwards to the `AddProduct.jsp` page.
+  - `/list` or `/`: Fetches the list of products from `ProductService` and forwards to the `Products.jsp` page.
+- **doPost**: Handles the submission of forms for adding and deleting products.
+  - `/add`: Adds a new product using the provided name and price, then redirects to the product list.
+  - `/delete`: Deletes a product by ID and redirects to the product list.
 
-The `ProductServlet` class acts as the entry point for handling requests related to products. It handles requests for listing, adding, and removing products.
-</details>
+### 2. Product Entity
 
-<details>
-<summary><i>JSP Pages</i></summary>
+The `Product` class represents a product with the following fields:
+- `id`: Unique identifier for the product.
+- `name`: Name of the product.
+- `price`: Price of the product.
 
-- **listProducts.jsp:** Displays products with delete buttons. Clicking on the delete button sends a request to remove the respective product.
-- **addProduct.jsp:** Contains a form for adding a new product. Submitting the form sends a request to add the product.
-</details>
+### 3. ProductService
 
-</details>
+The `ProductService` class manages a list of `Product` objects. It provides methods to:
+- Retrieve the list of products.
+- Add a new product.
+- Remove a product by ID.
 
-<details>
-<summary><b>Control Flow</b></summary>
+### 4. JSP Pages
 
-- Users interact with the UI by listing products or adding/removing products.
-- Requests are sent to `ProductServlet`.
-- `ProductServlet` delegates tasks to `ProductService` for business logic.
-- `ProductService` interacts with the database or data storage.
-- Responses are generated and sent back to the user via JSP pages.
-
-</details>
+- **AddProduct.jsp**: Form to add a new product.
+- **Products.jsp**: Displays the list of products.
